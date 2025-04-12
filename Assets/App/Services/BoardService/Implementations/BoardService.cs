@@ -89,10 +89,13 @@ namespace App.Services.BoardService.Implementations
             string[] movingIds = currentSnapshot.Pieces
                 .Where(piece => previousSnapshot.Pieces.ContainsKey(piece.Key) && piece.Value != previousSnapshot.Pieces[piece.Key])
                 .Select(piece => piece.Key).ToArray();
-
+            
             foreach (string movingId in movingIds)
             {
                 Coordinate destination = Coordinate.ToCoordinate(currentSnapshot.Pieces[movingId]);
+                _pawnIdByCoordinate[previousSnapshot.Pieces[movingId]] = "";
+                _pawnIdByCoordinate[destination.BoardCoordinate] = movingId;
+                
                 _pawns[movingId].SetCoordinate(destination, true);
             }
         }
@@ -398,19 +401,37 @@ namespace App.Services.BoardService.Implementations
                     }
                     
                     from = Coordinate.ToCoordinate(x, y, _centers[Coordinate.ToCoordinateString(x, y)]);
-                    
-                    //Bloqueando se tiver um inimigo 
-                    string inCoordinatePawn = _pawnIdByCoordinate[from.BoardCoordinate];
-                    if (!string.IsNullOrEmpty(inCoordinatePawn) && !IsSameTeam(_watchingPawnId, inCoordinatePawn) &&
-                        j < directions[i].Length - 1)
-                    {
-                        break;
-                    }
-                    
                     coordinates.Add(from);
                 }
             }
 
+            Coordinate firstFoundPawnInWay =
+                coordinates.FirstOrDefault(coord => !string.IsNullOrEmpty(_pawnIdByCoordinate[coord.BoardCoordinate]) && _pawnIdByCoordinate[coord.BoardCoordinate] != id);
+            string firstFoundPawnId = !string.IsNullOrEmpty(firstFoundPawnInWay.BoardCoordinate)
+                ? _pawnIdByCoordinate[firstFoundPawnInWay.BoardCoordinate]
+                : string.Empty;
+            bool isFriend = IsSameTeam(firstFoundPawnId, id);
+
+            if (!string.IsNullOrEmpty(firstFoundPawnId))
+            {
+                if (isFriend && inclusive)
+                {
+                    return coordinates.ToArray().ToPath(true).Split(firstFoundPawnInWay, inclusive: false);
+                }
+                else if (isFriend)
+                {
+                    return new Path { Coordinates = Array.Empty<Coordinate>() };
+                }
+                else if (inclusive || coordinates.IndexOf(firstFoundPawnInWay) == coordinates.Count - 1)
+                {
+                    return coordinates.ToArray().ToPath(inclusive).Split(firstFoundPawnInWay, inclusive: true);
+                }
+                else
+                {
+                    return new Path { Coordinates = Array.Empty<Coordinate>() };
+                }
+            }
+            
             return coordinates.ToArray().ToPath(inclusive);
         }
         

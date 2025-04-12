@@ -52,7 +52,7 @@ namespace App.Entities
                 Path foundPath = paths.First(p => p.Coordinates.Contains(Coordinate));
                 if (foundPath.Coordinates.Length > 0)
                 {
-                    foundPath = foundPath.Split(Coordinate);
+                    foundPath = foundPath.Split(Coordinate, inclusive: true);
                     boardService.InterpolateWatchedPawnTo(foundPath);
                     boardService.UnHighlightGrids();
                 }

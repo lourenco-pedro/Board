@@ -18,22 +18,27 @@ namespace App
                    && !otherBoardCoordinates.Except(myBoardCoordinates).Any();
         }
 
-        public Path Split(Coordinate coordinate)
+        public Path Split(Coordinate coordinate, bool inclusive = false)
         {
-            return Split(coordinate.BoardCoordinate);
+            return Split(coordinate.BoardCoordinate, inclusive);
         }
 
-        public Path Split(string boardCoordinates)
+        public Path Split(string boardCoordinates, bool inclusive = false)
         {
             List<Coordinate> coordinates = new List<Coordinate>();
             foreach (Coordinate coordinate in Coordinates)
             {
-                coordinates.Add(coordinate);
-                if(coordinate.BoardCoordinate == boardCoordinates)
+                if (coordinate.BoardCoordinate == boardCoordinates)
+                {
+                    if(inclusive)
+                        coordinates.Add(coordinate);
                     break;
+                }
+                
+                coordinates.Add(coordinate);
             }
 
-            return coordinates.ToArray().ToPath();
+            return coordinates.ToArray().ToPath(Inclusive);
         }
 
         public override bool Equals(object obj)
