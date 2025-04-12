@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 019e571bf1c9ab948a6add7c5f2ebbe2, type: 3}
+  m_Name: ML_Horse
+  m_EditorClassIdentifier: 
+  Patterns:
+  - Name: VERTICAL_UP_LEFT
+    NeighborhoodSettings:
+    - Direction: 0
+      Length: 2
+    - Direction: 1
+      Length: 1
+  - Name: VERTICAL_UP_RIGHT
+    NeighborhoodSettings:
+    - Direction: 0
+      Length: 2
+    - Direction: 2
+      Length: 1
+  - Name: VERTICAL_BOTTOM_RIGHT
+    NeighborhoodSettings:
+    - Direction: 3
+      Length: 2
+    - Direction: 2
+      Length: 1
+  - Name: VERTICAL_BOTTOM_LEFT
+    NeighborhoodSettings:
+    - Direction: 3
+      Length: 2
+    - Direction: 1
+      Length: 1
+  - Name: HORIZONTAL_LEFT_DOWN
+    NeighborhoodSettings:
+    - Direction: 1
+      Length: 2
+    - Direction: 3
+      Length: 1
+  - Name: HORIZONTAL_RIGHT_DOWN
+    NeighborhoodSettings:
+    - Direction: 2
+      Length: 2
+    - Direction: 3
+      Length: 1
+  - Name: HORIZONTAL_RIGHT_UP
+    NeighborhoodSettings:
+    - Direction: 2
+      Length: 2
+    - Direction: 0
+      Length: 1
+  - Name: HORIZONTAL_LEFT_UP
+    NeighborhoodSettings:
+    - Direction: 1
+      Length: 2
+    - Direction: 0
+      Length: 1
