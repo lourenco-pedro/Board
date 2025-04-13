@@ -1,0 +1,16 @@
+{
+    "name": "ppl.PBehaviourTree.Core",
+    "rootNamespace": "ppl.PBehaviourTree.Core",
+    "references": [
+        "GUID:3d54293b8ce4f564d8b08fb318ee1b3a"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
