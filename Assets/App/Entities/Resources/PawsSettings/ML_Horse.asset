@@ -14,50 +14,86 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Patterns:
   - Name: VERTICAL_UP_LEFT
+    Inclusive: 0
     NeighborhoodSettings:
     - Direction: 0
       Length: 2
     - Direction: 1
       Length: 1
   - Name: VERTICAL_UP_RIGHT
+    Inclusive: 0
     NeighborhoodSettings:
     - Direction: 0
       Length: 2
     - Direction: 2
       Length: 1
   - Name: VERTICAL_BOTTOM_RIGHT
+    Inclusive: 0
     NeighborhoodSettings:
     - Direction: 3
       Length: 2
     - Direction: 2
       Length: 1
   - Name: VERTICAL_BOTTOM_LEFT
+    Inclusive: 0
     NeighborhoodSettings:
     - Direction: 3
       Length: 2
     - Direction: 1
       Length: 1
   - Name: HORIZONTAL_LEFT_DOWN
+    Inclusive: 0
     NeighborhoodSettings:
     - Direction: 1
       Length: 2
     - Direction: 3
       Length: 1
   - Name: HORIZONTAL_RIGHT_DOWN
+    Inclusive: 0
     NeighborhoodSettings:
     - Direction: 2
       Length: 2
     - Direction: 3
       Length: 1
   - Name: HORIZONTAL_RIGHT_UP
+    Inclusive: 0
     NeighborhoodSettings:
     - Direction: 2
       Length: 2
     - Direction: 0
       Length: 1
   - Name: HORIZONTAL_LEFT_UP
+    Inclusive: 0
     NeighborhoodSettings:
     - Direction: 1
       Length: 2
     - Direction: 0
       Length: 1
+  - Name: UP_HORIZONTAL_LEFT
+    Inclusive: 0
+    NeighborhoodSettings:
+    - Direction: 0
+      Length: 1
+    - Direction: 1
+      Length: 2
+  - Name: UP_HORIZONTAL_RIGHT
+    Inclusive: 0
+    NeighborhoodSettings:
+    - Direction: 0
+      Length: 1
+    - Direction: 2
+      Length: 2
+  - Name: DOWN_HORIZONTAL_RIGHT
+    Inclusive: 0
+    NeighborhoodSettings:
+    - Direction: 3
+      Length: 1
+    - Direction: 2
+      Length: 2
+  - Name: DOWN_HORIZONTAL_LEFT
+    Inclusive: 0
+    NeighborhoodSettings:
+    - Direction: 3
+      Length: 1
+    - Direction: 1
+      Length: 2

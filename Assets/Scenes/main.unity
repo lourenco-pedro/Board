@@ -411,6 +411,7 @@ MonoBehaviour:
   _boardTileColorA: {r: 1, g: 0.879717, b: 0.759434, a: 1}
   _boardTileColorB: {r: 0.9339623, g: 0.69826895, b: 0.46257564, a: 1}
   _highLightTileColor: {r: 0.75215304, g: 0.972549, b: 0.32549018, a: 1}
+  _blockerColor: {r: 0.121568635, g: 0.6, b: 0.4666667, a: 1}
   _teamColors:
   - {r: 1, g: 1, b: 1, a: 1}
   - {r: 0, g: 0, b: 0, a: 1}

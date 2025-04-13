@@ -25,10 +25,12 @@ namespace App.Services.BoardService.Implementations
         
         private Transform _gridsParent;
         private Transform _pawnParent;
+        private Transform _blocksParent;
 
         private Dictionary<string, Vector2> _centers = new Dictionary<string, Vector2>();
         private Dictionary<string, Grid> _grids = new Dictionary<string, Grid>();
         private Dictionary<string, Pawn> _pawns = new Dictionary<string, Pawn>();
+        private Dictionary<string, Block> _blocks = new Dictionary<string, Block>();
         private Dictionary<string, string> _pawnIdByCoordinate = new Dictionary<string, string>();
         private Dictionary<int, Path> _highlightedGrids = new Dictionary<int, Path>();
         private Dictionary<int, string[]> _teams = new Dictionary<int, string[]>();
@@ -70,9 +72,9 @@ namespace App.Services.BoardService.Implementations
         private void RemovePawnsNoLongerInMatch(Match match, int snapshotIndex)
         {
             var pawnsToRemove = _pawns.Keys
-                                                .Where(pawnId => !match.Snapshots[snapshotIndex].Pieces.ContainsKey(pawnId))
-                                                .ToArray();
-            
+                .Except(match.Snapshots[snapshotIndex].Pieces.Keys)
+                .ToArray();
+
             foreach (string pawnToRemove in pawnsToRemove)
             {
                 _pawnIdByCoordinate[pawnToRemove] = "";
@@ -138,7 +140,7 @@ namespace App.Services.BoardService.Implementations
             }
         }
 
-        private void RefreshBoard(Match match, int snapshotIndex, int previusSnapshotIndex, Dictionary<int, string[]> teams)
+        private void RefreshBoard(Match match, int snapshotIndex, int previusSnapshotIndex, Dictionary<int, string[]> teams, Dictionary<string, string> blocks)
         {
             //Check if it has grids
             if (null == _gridsParent)
@@ -159,16 +161,62 @@ namespace App.Services.BoardService.Implementations
             RemovePawnsNoLongerInMatch(match, snapshotIndex);
             SpawnMatchPawns(match, snapshotIndex, teams);
             MovePawns(match, snapshotIndex, previusSnapshotIndex);
+
+            RefreshBlockedTiles(blocks);
         }
         
         private void EventOnMatchChange(EventPayload<MatchUpdateEventPayload> e)
         {
             _teams = e.Args.Teams;
-            RefreshBoard(e.Args.Match, e.Args.SnapshotIndex, e.Args.PreviusSnapshotIndex, e.Args.Teams);
+            RefreshBoard(
+                e.Args.Match, 
+                e.Args.SnapshotIndex, 
+                e.Args.PreviusSnapshotIndex, 
+                e.Args.Teams,
+                e.Args.BlockedTiles);
+            
+            UnHighlightGrids();
+            
             if(e.Args.IsNow)
                 UnwatchPawn();
             else //Disabilitando todos os pawns em caso estiver no passado
                 WatchPawn("invalidId");
+        }
+
+        private void RefreshBlockedTiles(Dictionary<string, string> blockedTiles)
+        {
+
+            if (null == _blocksParent)
+            {
+                _blocksParent = new GameObject("Blocks").transform;
+                _blocksParent.SetParent(Board);
+                _blocksParent.localPosition = Vector3.zero;
+            }
+            
+            //Remove blocks inexistentes
+            string[] blocksToRemove = _blocks.Keys.Except(blockedTiles.Keys).ToArray();
+            foreach (var blockedTileCoordinate in blocksToRemove)
+            {
+                Object.Destroy(_blocks[blockedTileCoordinate]);
+                _blocks.Remove(blockedTileCoordinate);
+            }
+
+            string[] newBlocks = blockedTiles.Keys.Except(_blocks.Keys).ToArray();
+            
+            //Instancia novos blocos
+            foreach (var newBlock in newBlocks)
+            {
+                Coordinate coordinate = Coordinate.ToCoordinate(newBlock);
+                string prefabId = blockedTiles[newBlock];
+
+                Block blockPrefab = EntitiesCatalog.GetEntityAs<Block>(prefabId);
+                Block blockInstance = Object.Instantiate(blockPrefab, _blocksParent);
+                
+                blockInstance.SetCoordinate(coordinate);
+                blockInstance.transform.localPosition = coordinate.Center;
+                blockInstance.SetColor(Settings.BlockerColor);
+                _blocks.Add(coordinate.BoardCoordinate, blockInstance);
+            }
         }
 
         private bool IsSameTeam(string pawnAId, string pawnBId)
@@ -391,15 +439,15 @@ namespace App.Services.BoardService.Implementations
                     
                     x = newIntCoords.x;
                     y = newIntCoords.y;
-
-                    if (x < 0 || y < 0 || x == Settings.Width || y == Settings.Height)
+                    
+                    if (x < 0 || y < 0 || x == Settings.Width || y == Settings.Height || _blocks.ContainsKey(Coordinate.ToCoordinateString(x, y)))
                     {
                         if(inclusive)
                             break;
                         
                         return new Path { Coordinates = Array.Empty<Coordinate>() };
                     }
-                    
+
                     from = Coordinate.ToCoordinate(x, y, _centers[Coordinate.ToCoordinateString(x, y)]);
                     coordinates.Add(from);
                 }
@@ -407,9 +455,11 @@ namespace App.Services.BoardService.Implementations
 
             Coordinate firstFoundPawnInWay =
                 coordinates.FirstOrDefault(coord => !string.IsNullOrEmpty(_pawnIdByCoordinate[coord.BoardCoordinate]) && _pawnIdByCoordinate[coord.BoardCoordinate] != id);
+            
             string firstFoundPawnId = !string.IsNullOrEmpty(firstFoundPawnInWay.BoardCoordinate)
                 ? _pawnIdByCoordinate[firstFoundPawnInWay.BoardCoordinate]
                 : string.Empty;
+            
             bool isFriend = IsSameTeam(firstFoundPawnId, id);
 
             if (!string.IsNullOrEmpty(firstFoundPawnId))

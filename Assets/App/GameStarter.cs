@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using App.Entities;
 using App.Services.BoardService;
@@ -7,7 +6,6 @@ using App.Services.MatchService;
 using App.Services.MatchService.Implementations;
 using UnityEngine;
 using ppl.Services.Core;
-using UnityEngine.Serialization;
 
 namespace App
 {
@@ -20,6 +18,7 @@ namespace App
         [SerializeField] private Color _boardTileColorA;
         [SerializeField] private Color _boardTileColorB;
         [SerializeField] private Color _highLightTileColor;
+        [SerializeField] private Color _blockerColor;
 
         [Space] [SerializeField] private Color[] _teamColors;
         
@@ -46,7 +45,14 @@ namespace App
             //Junto com addressable. Preenchendo um campo que existiria aqui de nome "Prefabs". Algo assim.
             //Isso evitaria o uso desnecessário de Resources.Load
             await ServiceContainer.AddService<IBoardService, BoardService>(new Dictionary<string, object>() {
-                { "Settings", new BoardSettings((int)_boardSize.x, (int)_boardSize.y, _boardTileColorA, _boardTileColorB, _highLightTileColor)},
+                { "Settings", new BoardSettings(
+                    (int)_boardSize.x, 
+                    (int)_boardSize.y, 
+                    _boardTileColorA, 
+                    _boardTileColorB, 
+                    _highLightTileColor,
+                    _blockerColor)
+                },
                 { "Board", _board },
                 { "EntitiesCatalog", Resources.Load<EntitiesCatalog>("EntitiesCatalog")},
                 { "TeamColors", _teamColors }
@@ -71,7 +77,13 @@ namespace App
                     { "team2_a", EntityNamesConstants.ENTITY_PAWN_HORSE },
                     { "team2_b", EntityNamesConstants.ENTITY_PAWN_BISHOP },
                 },
-                Snapshots = new()
+                BlockedTiles = new Dictionary<string, string>()
+                {
+                    { "d5", EntityNamesConstants.ENTITY_BLOCK_1 },
+                    { "e5", EntityNamesConstants.ENTITY_BLOCK_1 },
+                    { "f3", EntityNamesConstants.ENTITY_BLOCK_1 }
+                },
+                Snapshots = new List<MatchSnapshot>()
                 {
                     new MatchSnapshot()
                     {

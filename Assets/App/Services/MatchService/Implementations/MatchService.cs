@@ -20,7 +20,14 @@ namespace App.Services.MatchService.Implementations
             switch (eventName)
             {
                 case EventsConstants.EVENT_ON_MATCH_CHANGE:
-                    this.EmitEvent(EventsConstants.EVENT_ON_MATCH_CHANGE, new MatchUpdateEventPayload(_match, _matchSnapshotIndex, _previusIndex, _matchSnapshotIndex == _match.Snapshots.Count - 1, _match.Teams));
+                    this.EmitEvent(EventsConstants.EVENT_ON_MATCH_CHANGE, 
+                        new MatchUpdateEventPayload(
+                            _match, 
+                            _matchSnapshotIndex, 
+                            _previusIndex, 
+                            _matchSnapshotIndex == _match.Snapshots.Count - 1, 
+                            _match.Teams,
+                            _match.BlockedTiles));
                     break;
             }
         }

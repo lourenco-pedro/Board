@@ -24,3 +24,5 @@ MonoBehaviour:
       Value: {fileID: 4545114073064486828, guid: 53daf78bd5af9a34fa9996a3d4186485, type: 3}
     - Key: entity_pawn_horse
       Value: {fileID: 4545114073064486828, guid: b92436f402dffbc46b48a8ab0a06c654, type: 3}
+    - Key: entity_block_1
+      Value: {fileID: 8287169454759037006, guid: a63ee474509a6624686d8360c75d0fe0, type: 3}
