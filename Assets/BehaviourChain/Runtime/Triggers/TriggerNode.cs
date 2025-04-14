@@ -1,6 +1,6 @@
 using System;
 
-namespace ppl.PBehaviourTree.Core.Triggers
+namespace ppl.PBehaviourChain.Core.Triggers
 {
     public abstract class TriggerNode : Node, IDisposable
     {

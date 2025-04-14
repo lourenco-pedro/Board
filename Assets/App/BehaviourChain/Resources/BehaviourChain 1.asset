@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2ddbb7aea1daba40bc12cce103e30e1, type: 3}
+  m_Name: BehaviourChain 1
+  m_EditorClassIdentifier: 
+  TriggerNodes: []
+  Nodes:
+  - {fileID: 6057226392988920797}
+  State: 0
+--- !u!114 &6057226392988920797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c92f8ee56c94757a2473086f3bc6ff3, type: 3}
+  m_Name: OnFinishMoveTrigger
+  m_EditorClassIdentifier: 
+  NodeState: 0
+  Started: 0
+  GUID: 91d4c581-0e5e-4b99-b850-0817559f1baa
+  Position: {x: 0, y: 0}
+  Child: {fileID: 0}

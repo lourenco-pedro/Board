@@ -1,11 +1,11 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/BehaviourChain/Editor/BehaviourChainEditor.uss?fileID=7433441132597879392&amp;guid=aa2d65bc969e57c4d820ea30054dc6f8&amp;type=3#BehaviourChainEditor" />
-    <ppl.PBehaviourTree.Editor.Extensions.MySplitView fixed-pane-initial-dimension="250" style="background-color: rgb(37, 37, 37);">
-        <engine:VisualElement name="left-panel" style="flex-grow: 1;">
-            <ppl.PBehaviourTree.Editor.InspectorView style="flex-grow: 1;" />
+    <ppl.PBehaviourChain.Editor.Extensions.MySplitView fixed-pane-initial-dimension="250">
+        <engine:VisualElement name="panel-left" style="flex-grow: 1;">
+            <ppl.PBehaviourChain.Editor.InspectorView style="flex-grow: 1; background-color: rgb(60, 60, 60); padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px;" />
         </engine:VisualElement>
-        <engine:VisualElement name="right-panel" style="flex-grow: 1;">
-            <ppl.PBehaviourTree.Editor.Extensions.MyGraphView style="flex-grow: 1;" />
+        <engine:VisualElement name="panel-right" style="flex-grow: 1;">
+            <ppl.PBehaviourChain.Editor.Extensions.MyGraphView style="flex-grow: 1;" />
         </engine:VisualElement>
-    </ppl.PBehaviourTree.Editor.Extensions.MySplitView>
+    </ppl.PBehaviourChain.Editor.Extensions.MySplitView>
 </engine:UXML>

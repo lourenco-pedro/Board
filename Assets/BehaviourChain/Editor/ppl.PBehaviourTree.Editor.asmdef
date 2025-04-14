@@ -1,6 +1,6 @@
 {
     "name": "ppl.PBehaviourTree.Editor",
-    "rootNamespace": "ppl.PBehaviourTree.Editor",
+    "rootNamespace": "ppl.PBehaviourChain.Editor",
     "references": [
         "GUID:fbe51cb4233375f46a706004f771c5ce"
     ],

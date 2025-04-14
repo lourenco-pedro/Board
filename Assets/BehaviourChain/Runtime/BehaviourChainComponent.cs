@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ppl.PBehaviourTree.Core
+namespace ppl.PBehaviourChain.Core
 {
     public class BehaviourChainComponent : MonoBehaviour
     {

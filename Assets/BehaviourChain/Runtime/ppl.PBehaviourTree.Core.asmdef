@@ -1,6 +1,6 @@
 {
-    "name": "ppl.PBehaviourTree.Core",
-    "rootNamespace": "ppl.PBehaviourTree.Core",
+    "name": "ppl.PBehaviourChain.Core",
+    "rootNamespace": "ppl.PBehaviourChain.Core",
     "references": [
         "GUID:3d54293b8ce4f564d8b08fb318ee1b3a"
     ],

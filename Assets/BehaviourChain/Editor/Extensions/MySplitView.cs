@@ -1,6 +1,6 @@
 using UnityEngine.UIElements;
 
-namespace ppl.PBehaviourTree.Editor.Extensions
+namespace ppl.PBehaviourChain.Editor.Extensions
 {
     public class MySplitView : TwoPaneSplitView
     {

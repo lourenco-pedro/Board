@@ -1,6 +1,6 @@
 using App.CommonEventsPayload;
-using ppl.PBehaviourTree.Core;
-using ppl.PBehaviourTree.Core.Triggers;
+using ppl.PBehaviourChain.Core;
+using ppl.PBehaviourChain.Core.Triggers;
 using ppl.SimpleEventSystem;
 using UnityEngine;
 
@@ -36,7 +36,13 @@ namespace App.BehaviourChain.Triggers
 
         public override Node Instantiate()
         {
-            return ScriptableObject.CreateInstance<OnFinishMoveTrigger>();
+            OnFinishMoveTrigger node = ScriptableObject.CreateInstance<OnFinishMoveTrigger>();
+            node.GUID = GUID;
+            node.Started = Started;
+            node.Child = Child;
+            node.name = name;
+            node.NodeState = node.NodeState;
+            return node;
         }
     }
 }

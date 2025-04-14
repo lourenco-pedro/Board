@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ppl.PBehaviourTree.Core
+namespace ppl.PBehaviourChain.Core
 {
     public abstract class Node : ScriptableObject
     {
@@ -12,7 +12,9 @@ namespace ppl.PBehaviourTree.Core
         }    
         
         public State NodeState;
-        public bool Started;
+        [HideInInspector] public bool Started;
+        [HideInInspector] public string GUID;
+        [HideInInspector] public Vector2 Position;
         
         protected abstract void OnStart();
         protected abstract State OnUpdate();

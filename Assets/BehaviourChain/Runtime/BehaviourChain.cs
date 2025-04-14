@@ -1,13 +1,14 @@
 using System.Collections.Generic;
-using ppl.PBehaviourTree.Core.Triggers;
+using ppl.PBehaviourChain.Core.Triggers;
 using UnityEngine;
 
-namespace ppl.PBehaviourTree.Core
+namespace ppl.PBehaviourChain.Core
 {
-    [CreateAssetMenu(fileName = "BehaviourChain", menuName = "Scriptable Objects/BehaviourChain")]
+    [CreateAssetMenu(fileName = "BehaviourChain", menuName = "Behaviour Chain/New BehaviourChain")]
     public class BehaviourChain : ScriptableObject, System.IDisposable
     {
         public List<TriggerNode> TriggerNodes;
+        public List<Node> Nodes = new List<Node>();
         public Node.State State;
 
         private bool _isInstance;
