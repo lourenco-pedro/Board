@@ -1,5 +1,6 @@
 using ppl.PBehaviourChain.Core;
 using UnityEngine;
+using Behaviour = ppl.PBehaviourChain.Core.Behaviours.Behaviour;
 
 namespace App.BehaviourChain.BehaviourNodes
 {
@@ -7,17 +8,18 @@ namespace App.BehaviourChain.BehaviourNodes
     {
         protected override void OnStart()
         {
-            throw new System.NotImplementedException();
+            Debug.Log("Start Move Piece Behaviour for " + name);
         }
 
         protected override State OnUpdate()
         {
-            throw new System.NotImplementedException();
+            Debug.Log("Update Move Piece Behaviour for " + name);
+            return State.Success;
         }
 
         protected override void OnStop()
         {
-            throw new System.NotImplementedException();
+            Debug.Log("Stop Move Piece Behaviour for " + name);
         }
 
         public override Node Instantiate()
@@ -28,6 +30,7 @@ namespace App.BehaviourChain.BehaviourNodes
             node.Child = Child;
             node.name = name;
             node.NodeState = node.NodeState;
+            node.Child = Child?.Instantiate() as Behaviour;
             return node;
         }
     }

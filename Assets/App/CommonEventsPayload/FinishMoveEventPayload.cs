@@ -4,6 +4,7 @@ namespace App.CommonEventsPayload
     {
         public string PawnId;
         public string StartPosition;
-        public string EndPosigtion;
+        public string EndPosition;
+        public Path Path;
     }
 }

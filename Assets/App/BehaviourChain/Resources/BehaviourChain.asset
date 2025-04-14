@@ -1,40 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-9022367267993373957
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c92f8ee56c94757a2473086f3bc6ff3, type: 3}
-  m_Name: OnFinishMoveTrigger
-  m_EditorClassIdentifier: 
-  NodeState: 0
-  Started: 0
-  GUID: 4187301b-116b-496d-92cd-f525320adaaa
-  Position: {x: 0, y: 0}
-  Child: {fileID: 0}
---- !u!114 &-7269289674164341826
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c92f8ee56c94757a2473086f3bc6ff3, type: 3}
-  m_Name: OnFinishMoveTrigger
-  m_EditorClassIdentifier: 
-  NodeState: 0
-  Started: 0
-  GUID: 5c38e841-3f9a-4c1c-a019-995902fa04b8
-  Position: {x: -583, y: -146}
-  Child: {fileID: 0}
---- !u!114 &-5455516891206763638
+--- !u!114 &-7841017084017479070
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -48,9 +14,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NodeState: 0
   Started: 0
-  GUID: 26880aa1-17c7-4082-bbef-6ac4cdc96eb0
-  Position: {x: 9.049995, y: 122}
+  GUID: 6d99b464-f66c-45a2-b394-2559a0b3e458
+  Position: {x: 0, y: 0}
   Child: {fileID: 0}
+--- !u!114 &-5614487487563952672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8d2aab43f6c47a887eb52751c55ee91, type: 3}
+  m_Name: MovePieceBehaviour
+  m_EditorClassIdentifier: 
+  NodeState: 0
+  Started: 0
+  GUID: 93c5cfd3-6aca-4b0d-957b-af3743ed4214
+  Position: {x: -344, y: -284}
+  Child: {fileID: 6942124489589014962}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63,47 +46,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ddbb7aea1daba40bc12cce103e30e1, type: 3}
   m_Name: BehaviourChain
   m_EditorClassIdentifier: 
-  TriggerNodes: []
+  TriggerNodes:
+  - {fileID: 8482544681296269179}
   Nodes:
-  - {fileID: -5455516891206763638}
-  - {fileID: 8204901747927691983}
-  - {fileID: -9022367267993373957}
-  State: 0
---- !u!114 &6226781091022032420
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c92f8ee56c94757a2473086f3bc6ff3, type: 3}
-  m_Name: OnFinishMoveTrigger
-  m_EditorClassIdentifier: 
-  NodeState: 0
-  Started: 0
-  GUID: c26b4539-8ef3-4cc8-a779-f7dbced478c6
-  Position: {x: 0, y: 0}
-  Child: {fileID: 0}
---- !u!114 &7899050325723855802
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c92f8ee56c94757a2473086f3bc6ff3, type: 3}
-  m_Name: OnFinishMoveTrigger
-  m_EditorClassIdentifier: 
-  NodeState: 0
-  Started: 0
-  GUID: ac14b01d-37fc-440e-b720-e098b6e8d7d2
-  Position: {x: -435, y: -229.4}
-  Child: {fileID: 0}
---- !u!114 &8204901747927691983
+  - {fileID: 8482544681296269179}
+  - {fileID: -5614487487563952672}
+  - {fileID: 6942124489589014962}
+  - {fileID: -7841017084017479070}
+--- !u!114 &6942124489589014962
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -117,6 +67,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NodeState: 0
   Started: 0
-  GUID: 45112677-13be-46e8-b47e-394749c11870
-  Position: {x: -268.2501, y: -68.85}
-  Child: {fileID: -5455516891206763638}
+  GUID: 6ca9b04e-da64-4bc8-96d3-b681f07a38e6
+  Position: {x: -135, y: -284.5}
+  Child: {fileID: 0}
+--- !u!114 &8482544681296269179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c92f8ee56c94757a2473086f3bc6ff3, type: 3}
+  m_Name: OnFinishMoveTrigger
+  m_EditorClassIdentifier: 
+  NodeState: 0
+  Started: 0
+  GUID: f75516ca-b8a8-46df-aa3d-dddaed892bf0
+  Position: {x: -545.84, y: -284}
+  Child: {fileID: -5614487487563952672}
+  Pawn: {fileID: 0}

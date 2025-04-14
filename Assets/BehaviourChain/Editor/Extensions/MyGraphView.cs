@@ -112,8 +112,8 @@ namespace ppl.PBehaviourChain.Editor.Extensions
 
         public override void BuildContextualMenu(ContextualMenuPopulateEvent evt)
         {
-            (string contextMenu, ApplicationBehaviourProvider.BehaviourProviderEventHandler evt)[] menus =
-                ApplicationBehaviourProvider.GetContextMenuItems();
+            (string contextMenu, BehaviourChainEditorFactory.BehaviourProviderEventHandler evt)[] menus =
+                BehaviourChainEditorFactory.GetContextMenuItems();
             foreach (var menu in menus)
             {
                 evt.menu.AppendAction(menu.contextMenu, a =>

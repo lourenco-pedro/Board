@@ -5,17 +5,26 @@ using UnityEngine;
 namespace ppl.PBehaviourChain.Core
 {
     [CreateAssetMenu(fileName = "BehaviourChain", menuName = "Behaviour Chain/New BehaviourChain")]
-    public class BehaviourChain : ScriptableObject, System.IDisposable
+    public class BehaviourChain : ScriptableObject
     {
         public List<TriggerNode> TriggerNodes;
         public List<Node> Nodes = new List<Node>();
-        public Node.State State;
 
         private bool _isInstance;
-
-        public Node.State Update()
+        
+        public void Update()
         {
-            return State;
+            foreach (var triggeredNode in TriggerNodes)
+            {
+                if(triggeredNode.NodeState != Node.State.Running)
+                    continue;
+
+                if (triggeredNode.Update() != Node.State.Running)
+                {
+                    triggeredNode.NodeState = Node.State.Idle;
+                    triggeredNode.Child.ResetState();
+                }
+            }
         }
 
         public BehaviourChain Instantiate()
@@ -27,26 +36,15 @@ namespace ppl.PBehaviourChain.Core
             foreach (TriggerNode rootNode in TriggerNodes)
             {
                 TriggerNode triggerNode = rootNode.Instantiate() as TriggerNode;
-                
+
                 if (null != triggerNode)
                 {
-                    triggerNode.SetupTrigger();
                     chainInstance.TriggerNodes.Add(triggerNode);
+                    chainInstance.Nodes.Add(triggerNode);
                 }
             }
             
             return chainInstance;
-        }
-
-        public void Dispose()
-        {
-            if(!_isInstance)
-                return;
-
-            foreach (TriggerNode triggerNdoe in TriggerNodes)
-            {
-                triggerNdoe.Dispose();
-            }
         }
     }
 }

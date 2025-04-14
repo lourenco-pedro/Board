@@ -27,6 +27,18 @@ namespace ppl.PBehaviourChain.Editor
             wnd.titleContent = new GUIContent("BehaviourChainEditor");
             wnd.OnSelectionChange();
         }
+        
+        public static void Open(BehaviourChain behaviourChain)
+        {
+            BehaviourChainEditor wnd = GetWindow<BehaviourChainEditor>();
+            wnd.titleContent = new GUIContent("BehaviourChainEditor");
+            wnd.OnSelectionChange();
+            
+            wnd._chainWrapper = new BehaviourChainEditorWrapper(behaviourChain);
+            wnd._myGraphView.SetWrapper(wnd._chainWrapper);
+            wnd._myGraphView.PopulateGraph(behaviourChain.Nodes.ToArray());
+            
+        }
 
         public void CreateGUI()
         {

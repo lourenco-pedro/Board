@@ -1,9 +1,10 @@
-using System.Collections.Generic;
+using System;
 using System.Linq;
 using ppl.PBehaviourChain.Core;
 using ppl.PBehaviourChain.Core.Triggers;
 using UnityEditor;
 using UnityEngine;
+using Behaviour = ppl.PBehaviourChain.Core.Behaviours.Behaviour;
 
 namespace ppl.PBehaviourChain.Editor
 {
@@ -46,7 +47,14 @@ namespace ppl.PBehaviourChain.Editor
 
         public void SetupTriggers()
         {
-            var triggers = TypeCache.GetTypesDerivedFrom<TriggerNode>();
+            var triggers = BehaviourChainEditorFactory.GetTriggerDerivedTypes();
+            if (triggers.Length == 0)
+            {
+                TypeCache.TypeCollection collection = TypeCache.GetTypesDerivedFrom<TriggerNode>();
+                triggers = new Type[collection.Count];
+                collection.CopyTo(triggers, 0);
+            }
+            
             foreach (var trigger in triggers)
             {
                 if (_behaviourChain.TriggerNodes.Count(t => t.GetType() == trigger) == 0)
@@ -72,13 +80,13 @@ namespace ppl.PBehaviourChain.Editor
             ppl.PBehaviourChain.Core.Triggers.TriggerNode triggerNode = parent as ppl.PBehaviourChain.Core.Triggers.TriggerNode;
             if (null != triggerNode)
             {
-                triggerNode.Child = child;
+                triggerNode.Child = child as Behaviour;
             }
             
             ppl.PBehaviourChain.Core.Behaviours.Behaviour behaviourNode = parent as ppl.PBehaviourChain.Core.Behaviours.Behaviour;
             if (null != behaviourNode)
             {
-                behaviourNode.Child = child;
+                behaviourNode.Child = child as Behaviour;
             }
         }
 

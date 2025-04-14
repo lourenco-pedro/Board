@@ -6,12 +6,14 @@ namespace ppl.PBehaviourChain.Core
     {
         public enum State
         {
+            Idle,
             Running,
             Failure,
             Success
         }    
         
-        public State NodeState;
+        public State NodeState = State.Idle;
+        
         [HideInInspector] public bool Started;
         [HideInInspector] public string GUID;
         [HideInInspector] public Vector2 Position;
@@ -21,7 +23,7 @@ namespace ppl.PBehaviourChain.Core
         protected abstract void OnStop();
         public abstract Node Instantiate();
         
-        internal State Update()
+        public virtual State Update()
         {
             if (!Started)
             {

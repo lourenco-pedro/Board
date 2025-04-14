@@ -318,26 +318,26 @@ namespace App.Services.BoardService.Implementations
                 _pawns[_watchingPawnId].SetCoordinate(path.Coordinates[^1]);
                 _pawnIdByCoordinate[destination.BoardCoordinate] = _watchingPawnId;
 
+                string movedPawnId = _watchingPawnId;
                 UnwatchPawn();
+
+                Dictionary<string, string> piecesInBoard = !string.IsNullOrEmpty(pawnToKill) ? 
+                    _pawns.Where(pawn => !pawn.Key.Equals(pawnToKill)).ToDictionary(k => k.Key, v => v.Value.Coordinate.BoardCoordinate) :
+                    _pawns.ToDictionary(k => k.Key, v => v.Value.Coordinate.BoardCoordinate);
                 
-                if (!string.IsNullOrEmpty(pawnToKill))
+                this.EmitEvent(EventsConstants.EVENT_ON_MOVEMENT_DATA, new MatchSnapshot()
                 {
-                    this.EmitEvent(EventsConstants.EVENT_ON_MOVEMENT_DATA, new MatchSnapshot()
-                    {
-                        NextChainnedMovements = 0,
-                        Pieces = _pawns
-                            .Where(pawn => !pawn.Key.Equals(pawnToKill))
-                            .ToDictionary(k => k.Key, v => v.Value.Coordinate.BoardCoordinate)
-                    });
-                }
-                else
+                    NextChainnedMovements = 0,
+                    Pieces = piecesInBoard  
+                });
+                
+                this.EmitEvent(EventsConstants.EVENT_BEHAVIOURCHAIN_ON_FINISH_MOVE, new FinishMoveEventPayload
                 {
-                    this.EmitEvent(EventsConstants.EVENT_ON_MOVEMENT_DATA, new MatchSnapshot()
-                    {
-                        NextChainnedMovements = 0,
-                        Pieces = _pawns.ToDictionary(k => k.Key, v => v.Value.Coordinate.BoardCoordinate)
-                    });
-                }
+                    EndPosition = destination.BoardCoordinate,
+                    StartPosition = path.Coordinates[0].BoardCoordinate,
+                    PawnId = movedPawnId,
+                    Path = path
+                });
             });
         }
 
