@@ -26,7 +26,12 @@ namespace App.Entities
         }
         
         protected virtual void OnDestroy(){}
-        
+
+        public void SetClickStaste(bool state)
+        {
+            _button.interactable = state;
+        }
+
         public virtual void SetCoordinate(Coordinate coordinate, bool autoPosition = false)
         {
             _coordinate = coordinate;

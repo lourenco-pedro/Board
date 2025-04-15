@@ -11,7 +11,7 @@ PrefabInstance:
     - target: {fileID: 124716547423941843, guid: b33b01f8d31d65941adf9e97990b1b52, type: 3}
       propertyPath: _settings
       value: 
-      objectReference: {fileID: 11400000, guid: 38acf77b46d2b094a8005d7a67b7f73d, type: 2}
+      objectReference: {fileID: 11400000, guid: 2ffc52f259d8d9c4a87d7d555f7bb8d0, type: 2}
     - target: {fileID: 1967417191180114089, guid: b33b01f8d31d65941adf9e97990b1b52, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -94,19 +94,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5707509551735337991, guid: b33b01f8d31d65941adf9e97990b1b52, type: 3}
       propertyPath: m_Name
-      value: Pawn_Bishop
+      value: Pawn_Tower
       objectReference: {fileID: 0}
     - target: {fileID: 6456261825279064230, guid: b33b01f8d31d65941adf9e97990b1b52, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 3280677462901340520, guid: fbfeffb61d7502245b86c4081786f9f8, type: 3}
+      objectReference: {fileID: 7103704806754270101, guid: fbfeffb61d7502245b86c4081786f9f8, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5707509551735337991, guid: b33b01f8d31d65941adf9e97990b1b52, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8387465150933012635}
+      addedObject: {fileID: -8041537096178839356}
   m_SourcePrefab: {fileID: 100100000, guid: b33b01f8d31d65941adf9e97990b1b52, type: 3}
 --- !u!114 &4545114073064486828 stripped
 MonoBehaviour:
@@ -124,7 +124,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5707509551735337991, guid: b33b01f8d31d65941adf9e97990b1b52, type: 3}
   m_PrefabInstance: {fileID: 4514973117892920191}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8387465150933012635
+--- !u!114 &-8041537096178839356
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -136,5 +136,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e9e78155b8b89246a20cb12d6d0bc4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _chain: {fileID: 11400000, guid: 7108bfd2c6a83854d905183985518c59, type: 2}
+  _chain: {fileID: 11400000, guid: 19f2e5e15ac86004bab52c7b5339e2b8, type: 2}
   _pawn: {fileID: 4545114073064486828}

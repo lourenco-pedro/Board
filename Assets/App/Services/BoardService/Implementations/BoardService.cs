@@ -37,7 +37,7 @@ namespace App.Services.BoardService.Implementations
 
         private string _watchingPawnId;
 
-        private void SpawnMatchPawns(Match match, int snapshotIndex, Dictionary<int, string[]> teams)
+        private void SpawnMatchPawns(Match match, int snapshotIndex, Dictionary<int, string[]> teams, int[] botTeams)
         {
             var missingPawns = match.Snapshots[snapshotIndex].Pieces
                 .Where(pawn => !_pawns.ContainsKey(pawn.Key));
@@ -139,7 +139,7 @@ namespace App.Services.BoardService.Implementations
             }
         }
 
-        private void RefreshBoard(Match match, int snapshotIndex, int previusSnapshotIndex, Dictionary<int, string[]> teams, Dictionary<string, string> blocks)
+        private void RefreshBoard(Match match, int snapshotIndex, int previusSnapshotIndex, Dictionary<int, string[]> teams, Dictionary<string, string> blocks, int[] botTeams)
         {
             //Check if it has grids
             if (null == _gridsParent)
@@ -158,7 +158,7 @@ namespace App.Services.BoardService.Implementations
             }
             
             RemovePawnsNoLongerInMatch(match, snapshotIndex);
-            SpawnMatchPawns(match, snapshotIndex, teams);
+            SpawnMatchPawns(match, snapshotIndex, teams, botTeams);
             MovePawns(match, snapshotIndex, previusSnapshotIndex);
 
             RefreshBlockedTiles(blocks);
@@ -172,7 +172,8 @@ namespace App.Services.BoardService.Implementations
                 e.Args.SnapshotIndex, 
                 e.Args.PreviusSnapshotIndex, 
                 e.Args.Teams,
-                e.Args.BlockedTiles);
+                e.Args.BlockedTiles,
+                e.Args.BotTeams);
             
             UnHighlightGrids();
             

@@ -96,6 +96,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pawn_Horse
       objectReference: {fileID: 0}
+    - target: {fileID: 6456261825279064230, guid: b33b01f8d31d65941adf9e97990b1b52, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -7629236020728124212, guid: fbfeffb61d7502245b86c4081786f9f8, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -132,5 +136,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e9e78155b8b89246a20cb12d6d0bc4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _chain: {fileID: 11400000, guid: 19f2e5e15ac86004bab52c7b5339e2b8, type: 2}
+  _chain: {fileID: 11400000, guid: 40a26b5717789474aa4a84c558d24ce3, type: 2}
   _pawn: {fileID: 4545114073064486828}

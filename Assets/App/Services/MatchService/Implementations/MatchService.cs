@@ -27,6 +27,7 @@ namespace App.Services.MatchService.Implementations
                             _previusIndex, 
                             _matchSnapshotIndex == _match.Snapshots.Count - 1, 
                             _match.Teams,
+                            _match.BotTeams,
                             _match.BlockedTiles));
                     break;
             }
@@ -44,6 +45,20 @@ namespace App.Services.MatchService.Implementations
         {
             this.ListenToEvent<MatchSnapshot>(EventsConstants.EVENT_ON_MOVEMENT_DATA, EventOnMovementData);
             return Task.CompletedTask;
+        }
+
+        public bool IsBot(string pawnId)
+        {
+            if (_match.BotTeams == null || _match.BotTeams.Length == 0)
+                return false;
+
+            foreach (var team in _match.BotTeams)
+            {
+                if (_match.Teams[team].Contains(pawnId))
+                    return true;
+            }
+            
+            return false;
         }
 
         public bool SetMatch(Match match, int overrideSnapshotIndex = -1)

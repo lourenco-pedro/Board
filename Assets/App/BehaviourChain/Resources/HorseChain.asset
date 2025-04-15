@@ -1,0 +1,78 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-3811018420578808412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c92f8ee56c94757a2473086f3bc6ff3, type: 3}
+  m_Name: OnFinishMoveTrigger
+  m_EditorClassIdentifier: 
+  NodeState: 0
+  Started: 0
+  GUID: 9d9011ae-b2e5-49ec-b060-3a6dfd303e49
+  Position: {x: -55, y: -29}
+  Child: {fileID: 6117191286210763407}
+  Pawn: {fileID: 0}
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2ddbb7aea1daba40bc12cce103e30e1, type: 3}
+  m_Name: HorseChain
+  m_EditorClassIdentifier: 
+  TriggerNodes:
+  - {fileID: -3811018420578808412}
+  Nodes:
+  - {fileID: -3811018420578808412}
+  - {fileID: 6117191286210763407}
+  - {fileID: 7623870378862086047}
+--- !u!114 &6117191286210763407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8d2aab43f6c47a887eb52751c55ee91, type: 3}
+  m_Name: MovePieceBehaviourNode
+  m_EditorClassIdentifier: 
+  NodeState: 0
+  Started: 0
+  GUID: 6fd1092d-9e3f-414c-aa0c-4be7d6e9820f
+  Position: {x: 143, y: -29}
+  Child: {fileID: 7623870378862086047}
+  _movementLayout:
+    Direction: 0
+    Length: 3
+--- !u!114 &7623870378862086047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8d2aab43f6c47a887eb52751c55ee91, type: 3}
+  m_Name: MovePieceBehaviourNode
+  m_EditorClassIdentifier: 
+  NodeState: 0
+  Started: 0
+  GUID: 6f947c2a-3920-4c09-a9a5-8b9ff8dca49c
+  Position: {x: 374, y: -29}
+  Child: {fileID: 0}
+  _movementLayout:
+    Direction: 1
+    Length: 3

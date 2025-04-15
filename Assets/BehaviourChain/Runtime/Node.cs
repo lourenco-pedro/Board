@@ -13,7 +13,7 @@ namespace ppl.PBehaviourChain.Core
             Success
         }    
         
-        public State NodeState = State.Idle;
+        [HideInInspector] public State NodeState = State.Idle;
         
         [HideInInspector] public bool Started;
         [HideInInspector] public string GUID;

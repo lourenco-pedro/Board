@@ -13,8 +13,16 @@ namespace App
 {
     public class GameStarter : MonoBehaviour, IEventBindable
     {
+        public enum MatchType
+        {
+            HyperDiveChallenge,
+            Chess,
+            Damas
+        };
+    
+        [Header("What do you want to play?"), SerializeField] MatchType _matchType = MatchType.HyperDiveChallenge; 
         
-        [Header("Board settings")]
+        [Space, Header("Board settings")]
         [SerializeField] private RectTransform _board;
         [SerializeField] private Vector2 _boardSize;
         [SerializeField] private Color _boardTileColorA;
@@ -39,18 +47,6 @@ namespace App
         private void OnDestroy()
         {
             this.StopListenForEvent<bool>(EventsConstants.EVENT_UI_NAVIGATE_SPANSHOT);
-        }
-
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.LeftArrow))
-            {
-                ServiceContainer.UseService<IMatchService>(matchService => matchService.SetHistoryIndex(matchService.GetHistoryIndex() - 1));
-            }
-            else if (Input.GetKeyDown(KeyCode.RightArrow))
-            {
-                ServiceContainer.UseService<IMatchService>(matchService => matchService.SetHistoryIndex(matchService.GetHistoryIndex() + 1));
-            }
         }
 
         Dictionary<string, object> FactoryBoardServiceArguments()
@@ -80,47 +76,7 @@ namespace App
 
             //Nesse momento, BoardService ja deve estar escutando por eventos de alteração da match.
             //Ao alterar a match com SetMatch. O evento será disparado, iniciando a cadeia de SetupBoard do BoardService
-            matchService.SetMatch(new App.Match
-            {
-                //Definindo os times e as peças de cada time
-                Teams = new Dictionary<int, string[]>()
-                {
-                    { 0, new[] { "team1_a", "team1_b" } },
-                    { 1, new[] { "team2_a", "team2_b" } }
-                },
-                
-                //Identificando cada peça
-                Pawns = new Dictionary<string, string>()
-                {
-                    { "team1_a", EntityNamesConstants.ENTITY_PAWN_SIMPLE },
-                    { "team1_b", EntityNamesConstants.ENTITY_PAWN_BISHOP },
-                    { "team2_a", EntityNamesConstants.ENTITY_PAWN_HORSE },
-                    { "team2_b", EntityNamesConstants.ENTITY_PAWN_BISHOP },
-                },
-                
-                //Configurando tiles bloqueados
-                BlockedTiles = new Dictionary<string, string>()
-                {
-                    { "d5", EntityNamesConstants.ENTITY_BLOCK_1 },
-                    { "e5", EntityNamesConstants.ENTITY_BLOCK_1 },
-                    { "f3", EntityNamesConstants.ENTITY_BLOCK_1 }
-                },
-                
-                //Configurando snapshots.
-                Snapshots = new List<MatchSnapshot>()
-                {
-                    new MatchSnapshot()
-                    {
-                        Pieces = new Dictionary<string, string>()
-                        {
-                            { "team1_a", "d4" },
-                            { "team1_b", "e4" },
-                            { "team2_a", "f4" },
-                            { "team2_b", "g4" },
-                        }
-                    },
-                }
-            }, overrideSnapshotIndex: 0);
+            matchService.SetMatch(MatchStarterTypeFactory.GenerateMatch(), overrideSnapshotIndex: 0);
         }
     }
 }

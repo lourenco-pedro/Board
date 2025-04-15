@@ -1,0 +1,99 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8646824480403156761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8d2aab43f6c47a887eb52751c55ee91, type: 3}
+  m_Name: MovePieceBehaviourNode
+  m_EditorClassIdentifier: 
+  NodeState: 0
+  Started: 0
+  GUID: d91c6c69-1ed3-409d-89cf-f659f5505ad1
+  Position: {x: 186, y: -189}
+  Child: {fileID: 8758722334001973164}
+  _movementLayout:
+    Direction: 0
+    Length: 1
+--- !u!114 &-3850847438963999913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8d2aab43f6c47a887eb52751c55ee91, type: 3}
+  m_Name: MovePieceBehaviourNode
+  m_EditorClassIdentifier: 
+  NodeState: 0
+  Started: 0
+  GUID: e06fa5ab-de41-4311-8078-50296500cf07
+  Position: {x: 186, y: -35}
+  Child: {fileID: 0}
+  _movementLayout:
+    Direction: 0
+    Length: 1
+--- !u!114 &-31053290382675389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c92f8ee56c94757a2473086f3bc6ff3, type: 3}
+  m_Name: OnFinishMoveTrigger
+  m_EditorClassIdentifier: 
+  NodeState: 0
+  Started: 0
+  GUID: 17a02fef-9a6b-4eb1-9cd4-ad78e3d6b6cc
+  Position: {x: 211, y: -266}
+  Child: {fileID: -8646824480403156761}
+  Pawn: {fileID: 0}
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2ddbb7aea1daba40bc12cce103e30e1, type: 3}
+  m_Name: PawnChain
+  m_EditorClassIdentifier: 
+  TriggerNodes:
+  - {fileID: -31053290382675389}
+  Nodes:
+  - {fileID: -31053290382675389}
+  - {fileID: -8646824480403156761}
+  - {fileID: 8758722334001973164}
+  - {fileID: -3850847438963999913}
+--- !u!114 &8758722334001973164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8d2aab43f6c47a887eb52751c55ee91, type: 3}
+  m_Name: MovePieceBehaviourNode
+  m_EditorClassIdentifier: 
+  NodeState: 0
+  Started: 0
+  GUID: 9645903b-3fe0-4a80-bcc1-205355572723
+  Position: {x: 186, y: -112}
+  Child: {fileID: -3850847438963999913}
+  _movementLayout:
+    Direction: 2
+    Length: 1

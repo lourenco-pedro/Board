@@ -7,7 +7,7 @@ namespace ppl.PBehaviourChain.Core
     [CreateAssetMenu(fileName = "BehaviourChain", menuName = "Behaviour Chain/New BehaviourChain")]
     public class BehaviourChain : ScriptableObject
     {
-        public List<TriggerNode> TriggerNodes;
+        public List<TriggerNode> TriggerNodes = new List<TriggerNode>();
         public List<Node> Nodes = new List<Node>();
 
         private bool _isInstance;

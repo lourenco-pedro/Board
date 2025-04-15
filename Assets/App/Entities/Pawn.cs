@@ -1,5 +1,6 @@
 using System;
 using App.Services.BoardService;
+using App.Services.MatchService;
 using DG.Tweening;
 using ppl.Services.Core;
 using ppl.SimpleEventSystem;
@@ -37,6 +38,15 @@ namespace App.Entities
 
         protected override void OnClick()
         {
+            bool isBot = false;
+            ServiceContainer.UseService<IMatchService>(matchService =>
+            {
+                isBot = matchService.IsBot(Id);
+            });
+            
+             if(isBot)
+                 return;
+            
             ServiceContainer.UseService<IBoardService>(boardService =>
             {
                 boardService.UnHighlightGrids();

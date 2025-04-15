@@ -7,6 +7,7 @@ namespace App.Services.MatchService
         bool SetMatch(Match match, int overrideSnapshotIndex = -1);
         int GetHistoryIndex();
         void SetHistoryIndex(int index);
+        bool IsBot(string pawnId);
         void RegisterMatchHistory(MatchSnapshot snapshot);
     }
 }

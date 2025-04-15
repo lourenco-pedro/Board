@@ -543,6 +543,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 993cf5ceac5970e4ebad29566f234fcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _matchType: 0
   _board: {fileID: 540389929}
   _boardSize: {x: 8, y: 8}
   _boardTileColorA: {r: 1, g: 0.879717, b: 0.759434, a: 1}
@@ -551,7 +552,7 @@ MonoBehaviour:
   _blockerColor: {r: 0.121568635, g: 0.6, b: 0.4666667, a: 1}
   _teamColors:
   - {r: 1, g: 1, b: 1, a: 1}
-  - {r: 0, g: 0, b: 0, a: 1}
+  - {r: 1, g: 0.3915094, b: 0.3915094, a: 1}
 --- !u!1 &712034015
 GameObject:
   m_ObjectHideFlags: 0
