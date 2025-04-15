@@ -331,7 +331,6 @@ namespace App.Services.BoardService.Implementations
                 
                 this.EmitEvent(EventsConstants.EVENT_ON_MOVEMENT_DATA, new MatchSnapshot()
                 {
-                    NextChainnedMovements = 0,
                     Pieces = piecesInBoard  
                 });
                 

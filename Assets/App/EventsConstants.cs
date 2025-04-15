@@ -9,5 +9,8 @@ namespace App
         
         //BEHAVIOUR CHAIN EVENTS
         public const string EVENT_BEHAVIOURCHAIN_ON_FINISH_MOVE = "OnFinishMove";
+        
+        //UI EVENTS
+        public const string EVENT_UI_NAVIGATE_SPANSHOT = "OnNavigateSnapshotBack";
     }
 }
