@@ -60,6 +60,7 @@ namespace App.BehaviourChain.BehaviourNodes
         {
             base.ResetState();
             _isInterpolating = false;
+            _hasFailed = false;
         }
         
         public override Node Instantiate()

@@ -13,9 +13,15 @@ namespace ppl.PBehaviourChain.Core.Triggers
             //Se node to update for nulo, quer dizer que chegou na ponta do grafo. Não tendo mais child para atualizar
             //Pode entender que é um caminho concluido
             if (null == nodeToUpdate)
+            {
+                OnStop();
                 return State.Success;
+            }
                 
             bool hasFailed = nodeToUpdate.Update(args) == State.Failure;
+            
+            if(hasFailed)
+                OnStop();
             
             return !hasFailed ? State.Running : State.Failure;
         }

@@ -9,6 +9,8 @@ namespace App.BehaviourChain.Triggers
 {
     public class OnFinishMoveTrigger : AppLevelTrigger, IEventBindable
     {
+        private bool _preventDefault = false;
+        
         protected void OnDestroy()
         {
             Dispose();
@@ -25,13 +27,18 @@ namespace App.BehaviourChain.Triggers
 
         protected override void OnStop()
         {
+            _preventDefault = false;
         }
         
         private void EventOnFinishMove(EventPayload<FinishMoveEventPayload> payload)
         {
+            if(_preventDefault)
+                return;
+            
             if (Pawn.Id != payload.Args.PawnId)
                 return;
 
+            _preventDefault = true;
             NodeState = State.Running;
         }
         
