@@ -18,7 +18,7 @@ namespace ppl.PBehaviourChain.Core
             {
                 if(triggeredNode.NodeState != Node.State.Running)
                     continue;
-
+                
                 if (triggeredNode.Update() != Node.State.Running)
                 {
                     triggeredNode.NodeState = Node.State.Idle;

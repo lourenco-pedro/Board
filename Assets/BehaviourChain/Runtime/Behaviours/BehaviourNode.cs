@@ -1,10 +1,10 @@
 namespace ppl.PBehaviourChain.Core.Behaviours
 {
-    public abstract class Behaviour : Node
+    public abstract class BehaviourNode : Node
     {
-        public Behaviour Child;
+        public BehaviourNode Child;
 
-        public void ResetState()
+        public virtual void ResetState()
         {
             NodeState = State.Idle;
             Child?.ResetState();

@@ -1,12 +1,13 @@
+using System.Collections.Generic;
 using ppl.PBehaviourChain.Core.Behaviours;
 
 namespace ppl.PBehaviourChain.Core.Triggers
 {
     public abstract class TriggerNode : Node
     {
-        public Behaviour Child; 
+        public BehaviourNode Child; 
 
-        public override State Update()
+        public override State Update(Dictionary<string, object> args = null)
         {
             Node nodeToUpdate = Child.GetNextChild();
             //Se node to update for nulo, quer dizer que chegou na ponta do grafo. Não tendo mais child para atualizar
@@ -14,8 +15,9 @@ namespace ppl.PBehaviourChain.Core.Triggers
             if (null == nodeToUpdate)
                 return State.Success;
                 
-            nodeToUpdate.Update();
-            return State.Running;
+            bool hasFailed = nodeToUpdate.Update(args) == State.Failure;
+            
+            return !hasFailed ? State.Running : State.Failure;
         }
     }
 }

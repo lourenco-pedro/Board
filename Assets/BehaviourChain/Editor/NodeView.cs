@@ -53,7 +53,7 @@ namespace ppl.PBehaviourChain.Editor
 
         private void CreateOutputPorts()
         {
-            if (_node is ppl.PBehaviourChain.Core.Behaviours.Behaviour)
+            if (_node is ppl.PBehaviourChain.Core.Behaviours.BehaviourNode)
             {
                 OutputPort = InstantiatePort(Orientation.Horizontal, Direction.Output, Port.Capacity.Single,
                     typeof(bool));
@@ -74,7 +74,7 @@ namespace ppl.PBehaviourChain.Editor
 
         private void CreateInputPorts()
         {
-            if (_node is ppl.PBehaviourChain.Core.Behaviours.Behaviour)
+            if (_node is ppl.PBehaviourChain.Core.Behaviours.BehaviourNode)
             {
                 InputPort = InstantiatePort(Orientation.Horizontal, Direction.Input, Port.Capacity.Single,
                     typeof(bool));

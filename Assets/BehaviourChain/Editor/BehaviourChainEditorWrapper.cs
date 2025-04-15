@@ -1,10 +1,10 @@
 using System;
 using System.Linq;
 using ppl.PBehaviourChain.Core;
+using ppl.PBehaviourChain.Core.Behaviours;
 using ppl.PBehaviourChain.Core.Triggers;
 using UnityEditor;
 using UnityEngine;
-using Behaviour = ppl.PBehaviourChain.Core.Behaviours.Behaviour;
 
 namespace ppl.PBehaviourChain.Editor
 {
@@ -80,13 +80,13 @@ namespace ppl.PBehaviourChain.Editor
             ppl.PBehaviourChain.Core.Triggers.TriggerNode triggerNode = parent as ppl.PBehaviourChain.Core.Triggers.TriggerNode;
             if (null != triggerNode)
             {
-                triggerNode.Child = child as Behaviour;
+                triggerNode.Child = child as BehaviourNode;
             }
             
-            ppl.PBehaviourChain.Core.Behaviours.Behaviour behaviourNode = parent as ppl.PBehaviourChain.Core.Behaviours.Behaviour;
-            if (null != behaviourNode)
+            ppl.PBehaviourChain.Core.Behaviours.BehaviourNode behaviourNodeNode = parent as ppl.PBehaviourChain.Core.Behaviours.BehaviourNode;
+            if (null != behaviourNodeNode)
             {
-                behaviourNode.Child = child as Behaviour;
+                behaviourNodeNode.Child = child as BehaviourNode;
             }
         }
 
@@ -98,10 +98,10 @@ namespace ppl.PBehaviourChain.Editor
                 triggerNode.Child = null;
             }
             
-            ppl.PBehaviourChain.Core.Behaviours.Behaviour behaviourNode = parent as ppl.PBehaviourChain.Core.Behaviours.Behaviour;
-            if (null != behaviourNode)
+            ppl.PBehaviourChain.Core.Behaviours.BehaviourNode behaviourNodeNode = parent as ppl.PBehaviourChain.Core.Behaviours.BehaviourNode;
+            if (null != behaviourNodeNode)
             {
-                behaviourNode.Child = null;
+                behaviourNodeNode.Child = null;
             }
         }
 
@@ -113,10 +113,10 @@ namespace ppl.PBehaviourChain.Editor
                 return triggerNode.Child;
             }
             
-            ppl.PBehaviourChain.Core.Behaviours.Behaviour behaviourNode = parent as ppl.PBehaviourChain.Core.Behaviours.Behaviour;
-            if (null != behaviourNode)
+            ppl.PBehaviourChain.Core.Behaviours.BehaviourNode behaviourNodeNode = parent as ppl.PBehaviourChain.Core.Behaviours.BehaviourNode;
+            if (null != behaviourNodeNode)
             {
-                return behaviourNode.Child;
+                return behaviourNodeNode.Child;
             }
 
             return null;

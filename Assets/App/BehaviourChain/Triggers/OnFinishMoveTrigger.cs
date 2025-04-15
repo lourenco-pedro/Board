@@ -1,8 +1,9 @@
+using System.Collections.Generic;
 using App.CommonEventsPayload;
 using ppl.PBehaviourChain.Core;
+using ppl.PBehaviourChain.Core.Behaviours;
 using ppl.SimpleEventSystem;
 using UnityEngine;
-using Behaviour = ppl.PBehaviourChain.Core.Behaviours.Behaviour;
 
 namespace App.BehaviourChain.Triggers
 {
@@ -13,7 +14,7 @@ namespace App.BehaviourChain.Triggers
             Dispose();
         }
 
-        protected override void OnStart()
+        protected override void OnStart(Dictionary<string, object> args = null)
         {
         }
         
@@ -52,7 +53,7 @@ namespace App.BehaviourChain.Triggers
             node.name = name;
             node.NodeState = node.NodeState;
 
-            node.Child = Child.Instantiate() as Behaviour;
+            node.Child = Child.Instantiate() as BehaviourNode;
             
             return node;
         }

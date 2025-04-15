@@ -13,8 +13,9 @@ namespace App.Services.BoardService
         void HighlightGrids(Path path);
         void WatchPawn(string pawnId);
         void UnwatchPawn();
-        void InterpolateWatchedPawnTo(Path path);
+        void InterpolateWatchedPawnTo(Path path, System.Action onFinished = null);
         void UnHighlightGrids();
+        Coordinate GetPawnCoordinate(string pawnId);
         UnityEngine.Vector2 BoardOrigin();
         UnityEngine.Vector2 GetCenter(string boardCoordinate);
 

@@ -34,7 +34,6 @@ namespace App.Services.BoardService.Implementations
         private Dictionary<string, string> _pawnIdByCoordinate = new Dictionary<string, string>();
         private Dictionary<int, Path> _highlightedGrids = new Dictionary<int, Path>();
         private Dictionary<int, string[]> _teams = new Dictionary<int, string[]>();
-        private List<Coordinate> _blockedCoordinates = new List<Coordinate>();
 
         private string _watchingPawnId;
 
@@ -304,7 +303,7 @@ namespace App.Services.BoardService.Implementations
             this.EmitEvent(EventsConstants.EVENT_ON_PAWN_DESELECTED, watchedPawn);
         }
 
-        public void InterpolateWatchedPawnTo(Path path)
+        public void InterpolateWatchedPawnTo(Path path, Action onFinished = null)
         {
             if (string.IsNullOrEmpty(_watchingPawnId) || !_pawns.ContainsKey(_watchingPawnId))
                 return;
@@ -338,6 +337,8 @@ namespace App.Services.BoardService.Implementations
                     PawnId = movedPawnId,
                     Path = path
                 });
+                
+                onFinished?.Invoke();
             });
         }
 
@@ -355,6 +356,16 @@ namespace App.Services.BoardService.Implementations
             }
             
             _highlightedGrids.Clear();
+        }
+
+        public Coordinate GetPawnCoordinate(string pawnId)
+        {
+            if (_pawns.TryGetValue(pawnId, out var pawn))
+            {
+                return pawn.Coordinate;
+            }
+            
+            return Coordinate.ToCoordinate("a0");
         }
 
         public Vector2 BoardOrigin()

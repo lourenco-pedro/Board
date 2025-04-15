@@ -39,28 +39,30 @@ namespace App
             }
         }
 
-        async void SetupServices()
+        Dictionary<string, object> FactoryBoardServiceArguments()
         {
-            //Aqui seria um ótimo local para passar todos os prefabs que serão utilizados durante essa partida.
-            //Junto com addressable. Preenchendo um campo que existiria aqui de nome "Prefabs". Algo assim.
-            //Isso evitaria o uso desnecessário de Resources.Load
-            await ServiceContainer.AddService<IBoardService, BoardService>(new Dictionary<string, object>() {
-                { "Settings", new BoardSettings(
-                    (int)_boardSize.x, 
-                    (int)_boardSize.y, 
-                    _boardTileColorA, 
-                    _boardTileColorB, 
-                    _highLightTileColor,
-                    _blockerColor)
+            return new Dictionary<string, object>()
+            {
+                {
+                    "Settings", new BoardSettings(
+                        (int)_boardSize.x,
+                        (int)_boardSize.y,
+                        _boardTileColorA,
+                        _boardTileColorB,
+                        _highLightTileColor,
+                        _blockerColor)
                 },
                 { "Board", _board },
-                { "EntitiesCatalog", Resources.Load<EntitiesCatalog>("EntitiesCatalog")},
+                { "EntitiesCatalog", Resources.Load<EntitiesCatalog>("EntitiesCatalog") },
                 { "TeamColors", _teamColors }
-            });
-            
+            };
+        }
+
+        async void SetupServices()
+        {
+            await ServiceContainer.AddService<IBoardService, BoardService>(FactoryBoardServiceArguments());
             IMatchService matchService = await ServiceContainer.AddService<IMatchService, MatchService>(new Dictionary<string, object>());
 
-            
             //Nesse momento, BoardService ja deve estar escutando por eventos de alteração da match.
             //Ao alterar a match com SetMatch. O evento será disparado, iniciando a cadeia de SetupBoard
             matchService.SetMatch(new App.Match

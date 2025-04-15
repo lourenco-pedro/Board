@@ -11,7 +11,7 @@ namespace App.BehaviourChain.Editor
         [UnityEditor.Callbacks.DidReloadScripts]
         public static void OnApplicationRecompile()
         {
-            BehaviourChainEditorFactory.RegisterContextMenuItem("Add/Behavior/MovePieceBehavior", (wrapper) => wrapper.AddNode<MovePieceBehaviour>());
+            BehaviourChainEditorFactory.RegisterContextMenuItem("Add/Behavior/MovePieceBehavior", (wrapper) => wrapper.AddNode<MovePieceBehaviourNode>());
             BehaviourChainEditorFactory.RegisterTriggerTypeProvider(() => TypeCache.GetTypesDerivedFrom<AppLevelTrigger>().ToArray());
         }
     }
