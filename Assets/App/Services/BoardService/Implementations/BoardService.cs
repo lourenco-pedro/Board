@@ -205,6 +205,10 @@ namespace App.Services.BoardService.Implementations
             //Instancia novos blocos
             foreach (var newBlock in newBlocks)
             {
+                float width = BoardScreenWidth() / BoardWidth();
+                float height = BoardScreenHeight() / BoardHeight();
+                float originOffset = width / 2;
+                
                 Coordinate coordinate = Coordinate.ToCoordinate(newBlock);
                 string prefabId = blockedTiles[newBlock];
 
@@ -214,6 +218,7 @@ namespace App.Services.BoardService.Implementations
                 blockInstance.SetCoordinate(coordinate);
                 blockInstance.transform.localPosition = coordinate.Center;
                 blockInstance.SetColor(Settings.BlockerColor);
+                ((RectTransform)blockInstance.transform).sizeDelta = new Vector2(width, height);
                 _blocks.Add(coordinate.BoardCoordinate, blockInstance);
             }
         }
