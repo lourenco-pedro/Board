@@ -10,7 +10,6 @@ namespace App
 // - Sistema de salvamento de partidas: possibilita compartilhar sua partida com amigos. Podendo importar um arquivo
 // de save, pro exemplo
 // - Death match de N jogadores.
-// - History Navigation
 //
 // Aproveitei, e resolvi puxar um pouco do que o Chess.com tem. Um sistema de "Snapshots",
 // Sistema que permite navegar pelo histórico completo da partida.
@@ -22,8 +21,6 @@ namespace App
 //
 // O sistema foi projetado para suportar mais de dois jogadores,
 // permitindo a criação de modos de jogo como Deathmatch com N jogadores.
-//
-//Pls. refer to MatchStarterTypeFactory.cs para observar as diferentes formas de configurar a Match
 
     public class Match
     {

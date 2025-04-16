@@ -4,8 +4,11 @@ using App.Entities;
 
 namespace App
 {
-    public static class MatchStarterTypeFactory
+    public static class MatchGenerator
     {
+        //Gerando pawns
+        //Gerando blocos
+        //Gerando inimigos
         public static Match GenerateMatch()
         {
             List<string> chessCoordinates = new List<string>

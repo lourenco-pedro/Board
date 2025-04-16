@@ -74,9 +74,14 @@ namespace App
             await ServiceContainer.AddService<IBoardService, BoardService>(FactoryBoardServiceArguments());
             IMatchService matchService = await ServiceContainer.AddService<IMatchService, MatchService>(new Dictionary<string, object>());
 
+            Match saveFile = MatchGenerator.GenerateMatch();
+            string saveFileString = Newtonsoft.Json.JsonConvert.SerializeObject(saveFile);
+           
+            await System.IO.File.WriteAllTextAsync(Application.dataPath + "/save.json", saveFileString);
+            
             //Nesse momento, BoardService ja deve estar escutando por eventos de alteração da match.
             //Ao alterar a match com SetMatch. O evento será disparado, iniciando a cadeia de SetupBoard do BoardService
-            matchService.SetMatch(MatchStarterTypeFactory.GenerateMatch(), overrideSnapshotIndex: 0);
+            matchService.SetMatch(MatchGenerator.GenerateMatch(), overrideSnapshotIndex: 0);
         }
     }
 }
