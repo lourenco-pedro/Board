@@ -9,6 +9,9 @@ namespace ppl.PBehaviourChain.Core.Triggers
 
         public override State Update(Dictionary<string, object> args = null)
         {
+            if (null == Child)
+                return State.Failure;
+            
             Node nodeToUpdate = Child.GetNextChild();
             //Se node to update for nulo, quer dizer que chegou na ponta do grafo. Não tendo mais child para atualizar
             //Pode entender que é um caminho concluido

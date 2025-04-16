@@ -15,7 +15,7 @@ namespace ppl.PBehaviourChain.Core
         
         protected virtual void Awake()
         {
-            _instance = _chain.Instantiate();
+            _instance = _chain?.Instantiate();
         }
     }
 }

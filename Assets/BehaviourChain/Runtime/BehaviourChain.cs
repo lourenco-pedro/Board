@@ -22,7 +22,7 @@ namespace ppl.PBehaviourChain.Core
                 if (triggeredNode.Update() != Node.State.Running)
                 {
                     triggeredNode.NodeState = Node.State.Idle;
-                    triggeredNode.Child.ResetState();
+                    triggeredNode.Child?.ResetState();
                 }
             }
         }

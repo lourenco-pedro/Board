@@ -12,7 +12,7 @@ namespace App.BehaviourChain
         protected override void Awake()
         {
             base.Awake();
-            Instance.TriggerNodes.ForEach(trigger =>
+            Instance?.TriggerNodes.ForEach(trigger =>
             {
                 AppLevelTrigger appLevelTrigger = trigger as AppLevelTrigger;
                 if (null == appLevelTrigger)
@@ -25,7 +25,7 @@ namespace App.BehaviourChain
 
         private void Update()
         {
-            Instance.Update();
+            Instance?.Update();
         }
 
         private void OnValidate()

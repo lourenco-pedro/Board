@@ -60,7 +60,7 @@ namespace App.BehaviourChain.Triggers
             node.name = name;
             node.NodeState = node.NodeState;
 
-            node.Child = Child.Instantiate() as BehaviourNode;
+            node.Child = Child?.Instantiate() as BehaviourNode;
             
             return node;
         }
