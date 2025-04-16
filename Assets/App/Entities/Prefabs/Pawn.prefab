@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6456261825279064230}
   - component: {fileID: 5397995879519825536}
   - component: {fileID: 124716547423941843}
+  - component: {fileID: -2053842082029583931}
   m_Layer: 0
   m_Name: Pawn
   m_TagString: Untagged
@@ -133,6 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a94b11e7b94ce2a4c864a452e73b3c61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _id: 
   _coordinate:
     Horizontal: 0
     Vertical: 0
@@ -140,3 +142,18 @@ MonoBehaviour:
     Center: {x: 0, y: 0}
   _image: {fileID: 6456261825279064230}
   _button: {fileID: 5397995879519825536}
+  _settings: {fileID: 0}
+--- !u!114 &-2053842082029583931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5707509551735337991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e9e78155b8b89246a20cb12d6d0bc4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _chain: {fileID: 0}
+  _pawn: {fileID: 124716547423941843}

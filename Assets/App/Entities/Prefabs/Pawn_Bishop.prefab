@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -2053842082029583931, guid: b33b01f8d31d65941adf9e97990b1b52, type: 3}
+      propertyPath: _chain
+      value: 
+      objectReference: {fileID: 11400000, guid: 7108bfd2c6a83854d905183985518c59, type: 2}
     - target: {fileID: 124716547423941843, guid: b33b01f8d31d65941adf9e97990b1b52, type: 3}
       propertyPath: _settings
       value: 
@@ -103,38 +107,5 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5707509551735337991, guid: b33b01f8d31d65941adf9e97990b1b52, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8387465150933012635}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b33b01f8d31d65941adf9e97990b1b52, type: 3}
---- !u!114 &4545114073064486828 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 124716547423941843, guid: b33b01f8d31d65941adf9e97990b1b52, type: 3}
-  m_PrefabInstance: {fileID: 4514973117892920191}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8186784993686026104}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a94b11e7b94ce2a4c864a452e73b3c61, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1 &8186784993686026104 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5707509551735337991, guid: b33b01f8d31d65941adf9e97990b1b52, type: 3}
-  m_PrefabInstance: {fileID: 4514973117892920191}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &8387465150933012635
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8186784993686026104}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e9e78155b8b89246a20cb12d6d0bc4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _chain: {fileID: 11400000, guid: 7108bfd2c6a83854d905183985518c59, type: 2}
-  _pawn: {fileID: 4545114073064486828}
