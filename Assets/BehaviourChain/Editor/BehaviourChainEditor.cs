@@ -34,7 +34,11 @@ namespace ppl.PBehaviourChain.Editor
             wnd.titleContent = new GUIContent("BehaviourChainEditor");
             wnd.OnSelectionChange();
             
+            if (null == behaviourChain)
+                return;
+
             wnd._chainWrapper = new BehaviourChainEditorWrapper(behaviourChain);
+            
             wnd._myGraphView.SetWrapper(wnd._chainWrapper);
             wnd._myGraphView.PopulateGraph(behaviourChain.Nodes.ToArray());
             
