@@ -19,6 +19,13 @@ A generic system for creating and managing board games developed in Unity. This 
 - **Generic and Extensible Architecture**  
   Designed to be reusable and adaptable for different types of board games.
 
+## 🧩 Dependencies
+
+This project requires the following Unity packages:
+
+- [DOTween](https://dotween.demigiant.com/) – For handling animations and transitions.
+- [Unity Service System](https://github.com/lourenco-pedro/UnityServiceSystem) – A lightweight service-based system to manage shared logic and services across the application.
+
 ## 🛠️ Technologies Used
 
 - Unity (Main game engine)
