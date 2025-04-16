@@ -7,13 +7,13 @@ namespace ppl.PBehaviourChain.Editor
 {
     public static class BehaviourChainEditorFactory
     {
-        public delegate Node BehaviourProviderEventHandler(BehaviourChainEditorWrapper wrapper);
+        public delegate Node BehaviourContextMenuEventHandler(BehaviourChainEditorWrapper wrapper);
 
         private static Func<Type[]> _triggerTypes;
-        private static Dictionary<string, BehaviourProviderEventHandler> _handlers =
-            new Dictionary<string, BehaviourProviderEventHandler>();
+        private static Dictionary<string, BehaviourContextMenuEventHandler> _handlers =
+            new Dictionary<string, BehaviourContextMenuEventHandler>();
 
-        public static void RegisterContextMenuItem(string menu, BehaviourProviderEventHandler handler)
+        public static void RegisterContextMenuItem(string menu, BehaviourContextMenuEventHandler handler)
         {
             _handlers.TryAdd(menu, handler);
         }
@@ -33,7 +33,7 @@ namespace ppl.PBehaviourChain.Editor
             return _triggerTypes == null ? Type.EmptyTypes : _triggerTypes();
         }
 
-        public static (string, BehaviourProviderEventHandler)[] GetContextMenuItems()
+        public static (string, BehaviourContextMenuEventHandler)[] GetContextMenuItems()
         {
             return _handlers.Select(data => (contextMenu: data.Key, evt: data.Value)).ToArray();
         }
