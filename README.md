@@ -31,9 +31,3 @@ This project requires the following Unity packages:
 - Unity (Main game engine)
 - C# (Programming language)
 - Component-based and data-driven architecture
-
-## 🧪 How to Use
-
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/your-username/generic-board-game-system.git
